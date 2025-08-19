@@ -38,7 +38,7 @@ ai-chatbot/
 ├── client/                 # React frontend
 │   ├── src/
 │   │   ├── components/
-│   │   │   └── FastChatbot.jsx
+│   │   │   └── Chatbot.jsx
 │   │   ├── config/
 │   │   │   └── api.js
 │   │   ├── App.jsx
@@ -48,7 +48,6 @@ ai-chatbot/
 ├── server/                 # Node.js backend
 │   ├── config/
 │   │   ├── mongodb.js
-│   │   └── multer.js
 │   ├── controllers/
 │   │   ├── appointmentController.js
 │   │   ├── chatController.js
@@ -67,7 +66,6 @@ ai-chatbot/
 │   ├── .env
 │   ├── server.js
 │   └── package.json
-└── DEPLOYMENT.md
 ```
 
 ## 🚀 Quick Start
@@ -147,27 +145,3 @@ npm run dev
 - `POST /api/appointments` - Create appointment
 - `GET /api/appointments` - Get all appointments
 - `GET /api/appointments/:id` - Get specific appointment
-
-## 🌐 Deployment
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
-
-**Recommended hosting:**
-- Frontend: Vercel, Netlify
-- Backend: Railway, Render
-- Database: MongoDB Atlas
-
-## 📝 License
-
-MIT License - feel free to use this project for your own purposes.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
----
-
-**Built with ❤️ using React, Node.js, and Google Gemini AI**
