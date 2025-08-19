@@ -1,17 +1,12 @@
 # AI Document Chatbot
 
-A full-stack AI-powered chatbot that can answer questions from uploaded documents and handle appointment bookings with conversational forms.
+A modern chatbot web application leveraging Google's Gemini AI and LangChain for document processing and intelligent conversations.
 
 ## 🚀 Features
 
-- **Document Processing**: Upload and query PDF, DOCX, and TXT files
-- **AI-Powered Chat**: Uses Google Gemini 2.0 Flash for intelligent responses
-- **Appointment Booking**: Conversational form with natural date parsing
-- **Fast Search**: In-memory document store for quick responses
-- **Real-time Chat**: WebSocket-like experience with React
-- **File Management**: Upload, delete, and manage documents
-- **Input Validation**: Email, phone, date, and time validation
-- **Toast Notifications**: User-friendly feedback system
+- **Document Processing**: Upload and query PDF, DOCX, and TXT files. Using LangChain's RecursiveCharacterTextSplitter. 1000-character chunks with 200-character overlap. Fast document retrieval and searching
+- **AI-Powered Chat**: Uses Google Gemini 2.0 Flash for intelligent responses. Understands phrases like "tomorrow", "next Monday"
+- **Appointment Booking**: Guided conversation flow. Email, phone, and date validation. Cancel/restart functionality. Maintains booking state
 
 ## 🛠 Tech Stack
 
@@ -25,11 +20,11 @@ A full-stack AI-powered chatbot that can answer questions from uploaded document
 ### Backend
 - **Node.js** with Express
 - **MongoDB** with Mongoose
-- **LangChain** for document processing
+- **LangChain** components ChatGoogleGenerativeAI, RecursiveCharacterTextSplitter, PromptTemplate, RunnableSequence
 - **Google Gemini AI** for chat responses
-- **Multer** for file uploads
-- **PDF-Parse** for PDF text extraction
-- **Mammoth** for DOCX processing
+- **PDF-Parse** for PDFs
+- **Mammoth** for DOCX
+- **Native handling** for TXT
 
 ## 📁 Project Structure
 
