@@ -12,7 +12,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@langchain/core": "^0.3.71",
+    "@huggingface/inference": "^4.7.1",
+    "@langchain/community": "^0.3.53",
+    "@langchain/core": "^0.3.72",
     "@langchain/google-genai": "^0.2.16",
     "axios": "^1.11.0",
     "cors": "^2.8.5",
