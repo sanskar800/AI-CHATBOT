@@ -761,14 +761,6 @@ What would you like to do?`;
         });
       });
 
-      // Add note about search quality
-      const hasSemanticResults = relevantDocs.some(doc => doc.searchType === 'semantic');
-      if (!hasSemanticResults && pendingEmbeddings > 0) {
-        searchTypeInfo = `\n\n*Note: Currently using keyword search. ${pendingEmbeddings} document(s) are being processed for improved semantic search.*`;
-      } else if (hasSemanticResults) {
-        searchTypeInfo = `\n\n*Search used semantic similarity to find contextually relevant content.*`;
-      }
-
       const prompt = PromptTemplate.fromTemplate(`
         You are a helpful AI assistant that answers questions based on uploaded documents using hybrid search (semantic and keyword).
         
@@ -849,13 +841,11 @@ What would you like to do?`;
     }
 
     this.embeddingQueue.set(documentId, 'queued');
-
     // Process in background (non-blocking)
     setTimeout(async () => {
       try {
         console.log(`Starting background embedding generation for ${filename}`);
         this.embeddingQueue.set(documentId, 'processing');
-
         // Generate embeddings with full processing
         const chunksWithEmbeddings = await this.processDocument(content, filename, fileType);
 
@@ -868,7 +858,6 @@ What would you like to do?`;
 
         // Update database
         await Document.findByIdAndUpdate(documentId, { chunks: chunksWithEmbeddings });
-
         this.embeddingQueue.set(documentId, 'completed');
         console.log(`Background embedding generation completed for ${filename}`);
 
@@ -894,7 +883,6 @@ What would you like to do?`;
     try {
       console.log('Reprocessing all documents with embeddings...');
       const documents = await Document.find({});
-
       for (const doc of documents) {
         console.log(`Reprocessing ${doc.originalName}...`);
         const chunks = await this.processDocument(doc.content, doc.originalName, doc.fileType);
@@ -910,5 +898,4 @@ What would you like to do?`;
     }
   }
 }
-
 export default new FastLangChainService();
