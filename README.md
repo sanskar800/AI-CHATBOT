@@ -1,12 +1,31 @@
 # AI Document Chatbot
 
-A modern chatbot web application leveraging Google's Gemini AI and LangChain for document processing and intelligent conversations.
+A modern chatbot web application leveraging Google's Gemini AI and LangChain for intelligent document processing, semantic search, and conversational AI.
 
 ## 🚀 Features
 
-- **Document Processing**: Upload and query PDF, DOCX, and TXT files. Using LangChain's RecursiveCharacterTextSplitter. 1000-character chunks with 200-character overlap. Fast document retrieval and searching
-- **AI-Powered Chat**: Uses Google Gemini 2.0 Flash for intelligent responses. Understands phrases like "tomorrow", "next Monday"
-- **Appointment Booking**: Guided conversation flow. Email, phone, and date validation. Cancel/restart functionality. Maintains booking state
+### Document Processing & Search
+- **Multi-format Support**: Upload and query PDF, DOCX, and TXT files
+- **Hybrid Search System**: 
+  - Semantic search using Google's `text-embedding-004` model
+  - Keyword-based fallback for immediate availability
+  - Cosine similarity matching for contextual relevance
+- **Smart Text Chunking**: LangChain's RecursiveCharacterTextSplitter with 1000-character chunks and 200-character overlap
+- **Background Processing**: Fast upload with background embedding generation
+- **RAG Architecture**: Retrieval-Augmented Generation for accurate, context-aware responses
+
+### AI-Powered Conversations
+- **Google Gemini 2.0 Flash**: Advanced language model for intelligent responses
+- **Context-Aware Chat**: Maintains conversation history and document context
+- **Natural Language Understanding**: Processes queries in everyday language
+- **Intent Detection**: Automatically detects appointment booking requests
+
+### Smart Appointment Booking
+- **Guided Conversation Flow**: Step-by-step appointment collection
+- **Natural Date Parsing**: Understands "tomorrow", "next Monday", "in 3 days", etc.
+- **Multi-format Validation**: Email, phone, date, and time validation
+- **Flexible Cancellation**: Cancel/restart functionality at any step
+- **State Management**: Maintains booking progress across messages
 
 ## 🛠 Tech Stack
 
@@ -17,14 +36,17 @@ A modern chatbot web application leveraging Google's Gemini AI and LangChain for
 - **React Toastify** for notifications
 - **Axios** for API calls
 
-### Backend
-- **Node.js** with Express
-- **MongoDB** with Mongoose
-- **LangChain** components ChatGoogleGenerativeAI, RecursiveCharacterTextSplitter, PromptTemplate, RunnableSequence
-- **Google Gemini AI** for chat responses
-- **PDF-Parse** for PDFs
-- **Mammoth** for DOCX
-- **Native handling** for TXT
+### Backend & AI/ML
+- **Node.js** with Express framework
+- **MongoDB** with Mongoose ODM
+- **LangChain Components**:
+  - `ChatGoogleGenerativeAI` for chat completion
+  - `GoogleGenerativeAIEmbeddings` for vector embeddings
+  - `RecursiveCharacterTextSplitter` for text processing
+  - `PromptTemplate` & `RunnableSequence` for chain operations
+- **Google Gemini AI** (gemini-2.0-flash) for responses
+- **Vector Search**: Custom cosine similarity implementation
+- **Document Parsers**: PDF-Parse, Mammoth, native TXT handling
 
 ## 📁 Project Structure
 
@@ -122,7 +144,7 @@ npm run dev
 1. **Upload Documents**: Click "Upload Document" to add PDF, DOCX, or TXT files
 2. **Ask Questions**: Query your documents with natural language
 3. **Book Appointments**: Say "book appointment" to start the booking process
-4. **Natural Dates**: Use "tomorrow", "next Monday", or "YYYY-MM-DD" format
+4. **Natural Dates**: Use "tomorrow", "next Monday", "in X days" , "day after tomorrow" or "YYYY-MM-DD" format
 5. **Cancel Booking**: Say "cancel" anytime during appointment booking
 
 ## 🔧 API Endpoints
